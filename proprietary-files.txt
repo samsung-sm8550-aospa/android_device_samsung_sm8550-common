@@ -1301,10 +1301,6 @@ vendor/lib64/vendor.samsung.hardware.radio.messaging-V1-ndk.so
 vendor/lib64/vendor.samsung.hardware.radio.network-V1-ndk.so
 vendor/lib64/vendor.samsung.hardware.radio.sim-V1-ndk.so
 
-# RIL - UIM
-product/etc/permissions/UimService.xml
-product/framework/uimservicelibrary.jar
-
 # RemoteFS
 vendor/bin/rmt_storage
 vendor/etc/init/vendor.qti.rmt_storage.rc
