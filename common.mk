@@ -147,7 +147,6 @@ PRODUCT_COPY_FILES += \
 
 # Media
 PRODUCT_PACKAGES += \
-    libavservices_minijail \
     libavservices_minijail.vendor \
     libcodec2_hidl@1.2.vendor \
     libcodec2_vndk.vendor
@@ -212,6 +211,7 @@ TARGET_BOARD_PLATFORM := kalama
 TARGET_COMMON_QTI_COMPONENTS := \
     adreno \
     audio \
+    av \
     display \
     init \
     overlay \
