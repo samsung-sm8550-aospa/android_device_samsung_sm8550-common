@@ -50,13 +50,9 @@ BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_USES_QCOM_MERGE_DTBS_SCRIPT := true
 TARGET_NEEDS_DTBOIMAGE := true
 
-# Filesystem
-TARGET_FS_CONFIG_GEN := $(COMMON_PATH)/configs/config.fs
-
 # HIDL
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := \
-    $(COMMON_PATH)/vintf/device_framework_matrix.xml \
-    hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
+    $(COMMON_PATH)/vintf/device_framework_matrix.xml
 
 DEVICE_MANIFEST_FILE := \
     $(COMMON_PATH)/vintf/manifest_kalama.xml \
@@ -64,8 +60,6 @@ DEVICE_MANIFEST_FILE := \
     $(COMMON_PATH)/vintf/radio_manifest.xml \
     hardware/qcom-caf/sm8550/audio/primary-hal/configs/common/manifest_non_qmaa.xml \
     hardware/qcom-caf/sm8550/audio/primary-hal/configs/common/manifest_non_qmaa_extn.xml
-
-DEVICE_MATRIX_FILE := hardware/qcom-caf/common/compatibility_matrix.xml
 
 # Init Boot
 BOARD_INIT_BOOT_HEADER_VERSION := 4
@@ -85,15 +79,9 @@ BOARD_KERNEL_CMDLINE := \
     firmware_class.path=/vendor/firmware_mnt/image \
     video=vfb:640x400,bpp=32,memsize=3072000
 
-BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
-
-TARGET_KERNEL_SOURCE := kernel/samsung/sm8550
-
-# Kernel modules
-TARGET_KERNEL_EXT_MODULE_ROOT := kernel/samsung/sm8550-modules
+TARGET_HAS_GENERIC_KERNEL_HEADERS := true
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
@@ -140,14 +128,11 @@ BOARD_ROOT_EXTRA_FOLDERS := \
 
 # Platform
 BOARD_VENDOR := samsung
-BOARD_USES_QCOM_HARDWARE := true
-TARGET_BOARD_PLATFORM := kalama
 
 # Properties
 TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
 TARGET_PRODUCT_PROP += $(COMMON_PATH)/product.prop
 TARGET_SYSTEM_EXT_PROP += $(COMMON_PATH)/system_ext.prop
-TARGET_ODM_PROP += $(COMMON_PATH)/odm.prop
 
 # Recovery
 BOARD_HAS_DOWNLOAD_MODE := true
@@ -170,7 +155,6 @@ BOOT_SECURITY_PATCH := 2024-12-01
 VENDOR_SECURITY_PATCH := $(BOOT_SECURITY_PATCH)
 
 # SEPolicy
-include device/qcom/sepolicy_vndr/SEPolicy.mk
 include device/lineage/sepolicy/libperfmgr/sepolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
 PRODUCT_PRIVATE_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/private
